@@ -1,0 +1,31 @@
+require 'rubygems'
+require 'bundler'
+Bundler.require
+
+output 'public'
+
+input 'assets' do
+  match 'scripts/**/*.coffee' do
+    coffee_script
+  end
+
+  match 'scripts/**/*.js' do
+    concat 'application.js'
+  end
+
+  match 'styles/**/*.sass' do
+    sass
+  end
+
+  match 'styles/**/*.css' do
+    concat 'application.css'
+  end
+
+  match 'vendor/**/*' do
+    copy
+  end
+
+  match '**/*.html' do
+    copy
+  end
+end
